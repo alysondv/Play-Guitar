@@ -1,0 +1,272 @@
+[p GLOBOPT AUTOSTATIC IEEE_FLT IEEE_DBL LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F4520 ]
+[d frameptr 4065 ]
+"7 C:\Program Files (x86)\pic\sources\c99\common\__lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+"4 C:\Program Files (x86)\pic\sources\c99\common\fleq.c
+[v ___fleq __fleq `(b  1 e 0 0 ]
+"62 C:\Program Files (x86)\pic\sources\c99\common\float.c
+[v ___ftpack __ftpack `(f  1 e 4 0 ]
+"86 C:\Program Files (x86)\pic\sources\c99\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 4 0 ]
+"54 C:\Program Files (x86)\pic\sources\c99\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 4 0 ]
+"62 C:\Program Files (x86)\pic\sources\c99\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 4 0 ]
+"19 C:\Program Files (x86)\pic\sources\c99\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 4 0 ]
+"7 C:\Program Files (x86)\pic\sources\c99\common\llmod.c
+[v ___llmod __llmod `(ul  1 e 4 0 ]
+"7 C:\Program Files (x86)\pic\sources\c99\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"7 C:\Program Files (x86)\pic\sources\c99\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"10 C:\Program Files (x86)\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 4 0 ]
+"11 C:\Program Files (x86)\pic\sources\c99\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+"8 C:\Program Files (x86)\pic\sources\c99\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
+"15 C:\Program Files (x86)\pic\sources\c99\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"91 C:\Program Files (x86)\pic\sources\c99\common\Umul64.c
+[v ___omul __omul `(uo  1 e 8 0 ]
+"3 C:\Users\alyso\MPLABXProjects\projeto00.X\delay.c
+[v _atraso_ms atraso_ms `(v  1 e 1 0 ]
+"26 C:\Users\alyso\MPLABXProjects\projeto00.X\itoa.c
+[v _itoa itoa `(v  1 e 1 0 ]
+"5 C:\Users\alyso\MPLABXProjects\projeto00.X\lcd.c
+[v _lcd_wr lcd_wr `(v  1 e 1 0 ]
+"9
+[v _lcd_cmd lcd_cmd `(v  1 e 1 0 ]
+"19
+[v _lcd_dat lcd_dat `(v  1 e 1 0 ]
+"29
+[v _lcd_init lcd_init `(v  1 e 1 0 ]
+"47
+[v _lcd_str lcd_str `(v  1 e 1 0 ]
+"20 C:\Users\alyso\MPLABXProjects\projeto00.X\main.c
+[v _pontua pontua `(v  1 e 1 0 ]
+"81
+[v _msgDisplay msgDisplay `(v  1 e 1 0 ]
+"114
+[v _buzzer buzzer `(v  1 e 1 0 ]
+"133
+[v _msgInicio msgInicio `(v  1 e 1 0 ]
+"147
+[v _pontFinal pontFinal `(v  1 e 1 0 ]
+"170
+[v _musica musica `(v  1 e 1 0 ]
+"221
+[v _menu menu `(v  1 e 1 0 ]
+"282
+[v _main main `(i  1 e 2 0 ]
+"14 C:\Users\alyso\MPLABXProjects\projeto00.X\teclado.c
+[v _tc_tecla tc_tecla `(uc  1 e 1 0 ]
+"17 C:\Users\alyso\MPLABXProjects\projeto00.X\main.c
+[v _cont cont `ul  1 e 4 0 ]
+"10 C:\Users\alyso\MPLABXProjects\projeto00.X\teclado.c
+[v _linha linha `C[4]uc  1 e 4 0 ]
+"282 C:\Users\alyso\MPLABXProjects\projeto00.X\main.c
+[v _main main `(i  1 e 2 0 ]
+{
+"285
+} 0
+"221
+[v _menu menu `(v  1 e 1 0 ]
+{
+"233
+[v menu@julieta julieta `[20]uc  1 a 20 60 ]
+"230
+[v menu@mozart mozart `[20]uc  1 a 20 40 ]
+"234
+[v menu@julietaC julietaC `[20]uc  1 a 20 20 ]
+"231
+[v menu@mozartC mozartC `[20]uc  1 a 20 0 ]
+"224
+[v menu@tmp tmp `uc  1 a 1 80 ]
+"228
+[v menu@F45 F45 `[20]uc  1 s 20 F45 ]
+"230
+[v menu@F47 F47 `[20]uc  1 s 20 F47 ]
+"231
+[v menu@F49 F49 `[20]uc  1 s 20 F49 ]
+"233
+[v menu@F51 F51 `[20]uc  1 s 20 F51 ]
+"280
+} 0
+"147
+[v _pontFinal pontFinal `(v  1 e 1 0 ]
+{
+"149
+[v pontFinal@valor valor `[6]uc  1 a 6 16 ]
+"167
+} 0
+"26 C:\Users\alyso\MPLABXProjects\projeto00.X\itoa.c
+[v _itoa itoa `(v  1 e 1 0 ]
+{
+[v itoa@val val `ui  1 p 2 12 ]
+[v itoa@str str `*.39uc  1 p 2 14 ]
+"34
+} 0
+"7 C:\Program Files (x86)\pic\sources\c99\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+{
+"10
+[v ___lwmod@counter counter `uc  1 a 1 4 ]
+"7
+[v ___lwmod@dividend dividend `ui  1 p 2 0 ]
+[v ___lwmod@divisor divisor `ui  1 p 2 2 ]
+"25
+} 0
+"7 C:\Program Files (x86)\pic\sources\c99\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"10
+[v ___lwdiv@quotient quotient `ui  1 a 2 9 ]
+"11
+[v ___lwdiv@counter counter `uc  1 a 1 11 ]
+"7
+[v ___lwdiv@dividend dividend `ui  1 p 2 5 ]
+[v ___lwdiv@divisor divisor `ui  1 p 2 7 ]
+"30
+} 0
+"170 C:\Users\alyso\MPLABXProjects\projeto00.X\main.c
+[v _musica musica `(v  1 e 1 0 ]
+{
+"171
+[v musica@i i `uc  1 a 1 57 ]
+"172
+[v musica@tmp tmp `uc  1 a 1 56 ]
+"170
+[v musica@msc msc `*.39uc  1 p 2 48 ]
+[v musica@mscC mscC `*.39uc  1 p 2 50 ]
+[v musica@op op `i  1 p 2 52 ]
+"218
+} 0
+"14 C:\Users\alyso\MPLABXProjects\projeto00.X\teclado.c
+[v _tc_tecla tc_tecla `(uc  1 e 1 0 ]
+{
+"15
+[v tc_tecla@to to `ui  1 a 2 8 ]
+"16
+[v tc_tecla@i i `uc  1 a 1 12 ]
+"17
+[v tc_tecla@ret ret `uc  1 a 1 11 ]
+"18
+[v tc_tecla@tmp tmp `uc  1 a 1 10 ]
+"14
+[v tc_tecla@timeout timeout `ui  1 p 2 6 ]
+"68
+} 0
+"20 C:\Users\alyso\MPLABXProjects\projeto00.X\main.c
+[v _pontua pontua `(v  1 e 1 0 ]
+{
+"28
+[v pontua@decimal decimal `[10]i  1 a 20 22 ]
+"27
+[v pontua@k k `i  1 a 2 46 ]
+"29
+[v pontua@delay delay `ui  1 a 2 44 ]
+"30
+[v pontua@i i `i  1 a 2 42 ]
+"27
+[v pontua@F22 F22 `[10]i  1 s 20 F22 ]
+"59
+} 0
+"7 C:\Program Files (x86)\pic\sources\c99\common\llmod.c
+[v ___llmod __llmod `(ul  1 e 4 0 ]
+{
+"10
+[v ___llmod@counter counter `uc  1 a 1 21 ]
+"7
+[v ___llmod@dividend dividend `ul  1 p 4 13 ]
+[v ___llmod@divisor divisor `ul  1 p 4 17 ]
+"25
+} 0
+"7 C:\Program Files (x86)\pic\sources\c99\common\__lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+{
+"10
+[v ___lldiv@quotient quotient `ul  1 a 4 8 ]
+"11
+[v ___lldiv@counter counter `uc  1 a 1 12 ]
+"7
+[v ___lldiv@dividend dividend `ul  1 p 4 0 ]
+[v ___lldiv@divisor divisor `ul  1 p 4 4 ]
+"30
+} 0
+"133 C:\Users\alyso\MPLABXProjects\projeto00.X\main.c
+[v _msgInicio msgInicio `(v  1 e 1 0 ]
+{
+"144
+} 0
+"81
+[v _msgDisplay msgDisplay `(v  1 e 1 0 ]
+{
+"83
+[v msgDisplay@i i `uc  1 a 1 14 ]
+"81
+[v msgDisplay@op op `i  1 p 2 12 ]
+"111
+} 0
+"114
+[v _buzzer buzzer `(v  1 e 1 0 ]
+{
+[v buzzer@op op `i  1 p 2 12 ]
+"130
+} 0
+"47 C:\Users\alyso\MPLABXProjects\projeto00.X\lcd.c
+[v _lcd_str lcd_str `(v  1 e 1 0 ]
+{
+"48
+[v lcd_str@i i `uc  1 a 1 11 ]
+"47
+[v lcd_str@str str `*.35Cuc  1 p 2 7 ]
+"54
+} 0
+"19
+[v _lcd_dat lcd_dat `(v  1 e 1 0 ]
+{
+[v lcd_dat@val val `uc  1 a 1 wreg ]
+[v lcd_dat@val val `uc  1 a 1 wreg ]
+[v lcd_dat@val val `uc  1 a 1 6 ]
+"27
+} 0
+"29
+[v _lcd_init lcd_init `(v  1 e 1 0 ]
+{
+"45
+} 0
+"9
+[v _lcd_cmd lcd_cmd `(v  1 e 1 0 ]
+{
+[v lcd_cmd@val val `uc  1 a 1 wreg ]
+[v lcd_cmd@val val `uc  1 a 1 wreg ]
+[v lcd_cmd@val val `uc  1 a 1 6 ]
+"17
+} 0
+"5
+[v _lcd_wr lcd_wr `(v  1 e 1 0 ]
+{
+[v lcd_wr@val val `uc  1 a 1 wreg ]
+[v lcd_wr@val val `uc  1 a 1 wreg ]
+[v lcd_wr@val val `uc  1 a 1 0 ]
+"7
+} 0
+"3 C:\Users\alyso\MPLABXProjects\projeto00.X\delay.c
+[v _atraso_ms atraso_ms `(v  1 e 1 0 ]
+{
+"5
+[v atraso_ms@i i `VEui  1 a 2 2 ]
+"4
+[v atraso_ms@k k `VEuc  1 a 1 5 ]
+[v atraso_ms@j j `VEuc  1 a 1 4 ]
+"3
+[v atraso_ms@t t `i  1 p 2 0 ]
+"12
+} 0

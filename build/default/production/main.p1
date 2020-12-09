@@ -1,0 +1,1000 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"17 ./lcd.h
+[; ;./lcd.h: 17: void lcd_cmd(unsigned char val);
+[v _lcd_cmd `(v ~T0 @X0 0 ef1`uc ]
+"19
+[; ;./lcd.h: 19: void lcd_str(const char* str);
+[v _lcd_str `(v ~T0 @X0 0 ef1`*Cuc ]
+"4 ./delay.h
+[; ;./delay.h: 4: void atraso_ms(int t);
+[v _atraso_ms `(v ~T0 @X0 0 ef1`i ]
+"26 ./itoa.h
+[; ;./itoa.h: 26: void itoa(unsigned int val, char* str );
+[v _itoa `(v ~T0 @X0 0 ef2`ui`*uc ]
+"8 ./teclado.h
+[; ;./teclado.h: 8:     unsigned char tc_tecla(unsigned int timeout);
+[v _tc_tecla `(uc ~T0 @X0 0 ef1`ui ]
+"16 ./lcd.h
+[; ;./lcd.h: 16: void lcd_init(void);
+[v _lcd_init `(v ~T0 @X0 0 ef ]
+"18
+[; ;./lcd.h: 18: void lcd_dat(unsigned char val);
+[v _lcd_dat `(v ~T0 @X0 0 ef1`uc ]
+[p mainexit ]
+"38 ./config.h
+[p x OSC=HS ]
+"39
+[p x WDT=OFF ]
+"40
+[p x LVP=OFF ]
+"41
+[p x DEBUG = OFF ]
+"42
+[p x WDTPS = 1 ]
+"14 main.c
+[; ;main.c: 14:  unsigned int atrasoMin = 20;
+[v _atrasoMin `ui ~T0 @X0 1 e ]
+[i _atrasoMin
+-> -> 20 `i `ui
+]
+"15
+[; ;main.c: 15:  unsigned int atrasoMed = 150;
+[v _atrasoMed `ui ~T0 @X0 1 e ]
+[i _atrasoMed
+-> -> 150 `i `ui
+]
+"16
+[; ;main.c: 16:  unsigned int atrasoMax = 1000;
+[v _atrasoMax `ui ~T0 @X0 1 e ]
+[i _atrasoMax
+-> -> 1000 `i `ui
+]
+"17
+[; ;main.c: 17:  long int unsigned cont = 0;
+[v _cont `ul ~T0 @X0 1 e ]
+[i _cont
+-> -> -> 0 `i `l `ul
+]
+"20
+[; ;main.c: 20:  void pontua(void){
+[v _pontua `(v ~T0 @X0 1 ef ]
+{
+[e :U _pontua ]
+[f ]
+"21
+[; ;main.c: 21:     (((*(volatile __near unsigned char*)0xFF1)) &= ~(1<<7));
+[e =& *U -> -> 4081 `i `*VNuc -> ~ << -> 1 `i -> 7 `i `uc ]
+"22
+[; ;main.c: 22:     (*(volatile __near unsigned char*)0xFC1) = 0x0E;
+[e = *U -> -> 4033 `i `*VNuc -> -> 14 `i `uc ]
+"23
+[; ;main.c: 23:     (*(volatile __near unsigned char*)0xF92) = 0x00;
+[e = *U -> -> 3986 `i `*VNuc -> -> 0 `i `uc ]
+"24
+[; ;main.c: 24:     (*(volatile __near unsigned char*)0xF95) = 0x00;
+[e = *U -> -> 3989 `i `*VNuc -> -> 0 `i `uc ]
+"25
+[; ;main.c: 25:     (*(volatile __near unsigned char*)0xF83) = 0x00;
+[e = *U -> -> 3971 `i `*VNuc -> -> 0 `i `uc ]
+"27
+[; ;main.c: 27:     int k;
+[v _k `i ~T0 @X0 1 a ]
+[v F22 `i ~T0 @X0 -> 10 `i s ]
+[i F22
+:U ..
+"28
+[; ;main.c: 28:     int decimal[10] = {0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F};
+-> 63 `i
+-> 6 `i
+-> 91 `i
+-> 79 `i
+-> 102 `i
+-> 109 `i
+-> 125 `i
+-> 7 `i
+-> 127 `i
+-> 111 `i
+..
+]
+[v _decimal `i ~T0 @X0 -> 10 `i a ]
+[e = _decimal F22 ]
+"29
+[; ;main.c: 29:     int unsigned delay = 100;
+[v _delay `ui ~T0 @X0 1 a ]
+[e = _delay -> -> 100 `i `ui ]
+"30
+[; ;main.c: 30:     int i;
+[v _i `i ~T0 @X0 1 a ]
+"32
+[; ;main.c: 32:     for(i = 0;i < 100;i++){
+{
+[e = _i -> 0 `i ]
+[e $ < _i -> 100 `i 2  ]
+[e $U 3  ]
+[e :U 2 ]
+{
+"34
+[; ;main.c: 34:         (*(volatile __near unsigned char*)0xF83) = decimal[(cont/10)%10];
+[e = *U -> -> 3971 `i `*VNuc -> *U + &U _decimal * -> % / _cont -> -> -> 10 `i `l `ul -> -> -> 10 `i `l `ul `ux -> -> # *U &U _decimal `ui `ux `uc ]
+"35
+[; ;main.c: 35:         (((*(volatile __near unsigned char*)0xF80)) |= (1<<5));
+[e =| *U -> -> 3968 `i `*VNuc -> << -> 1 `i -> 5 `i `uc ]
+"36
+[; ;main.c: 36:         (((*(volatile __near unsigned char*)0xF80)) &= ~(1<<4));
+[e =& *U -> -> 3968 `i `*VNuc -> ~ << -> 1 `i -> 4 `i `uc ]
+"37
+[; ;main.c: 37:         (((*(volatile __near unsigned char*)0xF80)) &= ~(1<<3));
+[e =& *U -> -> 3968 `i `*VNuc -> ~ << -> 1 `i -> 3 `i `uc ]
+"38
+[; ;main.c: 38:         for(k = 0; k < delay; k++);
+{
+[e = _k -> 0 `i ]
+[e $U 8  ]
+[e :U 5 ]
+[e ++ _k -> 1 `i ]
+[e :U 8 ]
+[e $ < -> _k `ui _delay 5  ]
+[e :U 6 ]
+}
+"40
+[; ;main.c: 40:         (*(volatile __near unsigned char*)0xF83) = decimal[(cont/100)%10];
+[e = *U -> -> 3971 `i `*VNuc -> *U + &U _decimal * -> % / _cont -> -> -> 100 `i `l `ul -> -> -> 10 `i `l `ul `ux -> -> # *U &U _decimal `ui `ux `uc ]
+"41
+[; ;main.c: 41:         (((*(volatile __near unsigned char*)0xF80)) &= ~(1<<5));
+[e =& *U -> -> 3968 `i `*VNuc -> ~ << -> 1 `i -> 5 `i `uc ]
+"42
+[; ;main.c: 42:         (((*(volatile __near unsigned char*)0xF80)) |= (1<<4));
+[e =| *U -> -> 3968 `i `*VNuc -> << -> 1 `i -> 4 `i `uc ]
+"43
+[; ;main.c: 43:         (((*(volatile __near unsigned char*)0xF80)) &= ~(1<<3));
+[e =& *U -> -> 3968 `i `*VNuc -> ~ << -> 1 `i -> 3 `i `uc ]
+"44
+[; ;main.c: 44:         for(k = 0; k < delay; k++);
+{
+[e = _k -> 0 `i ]
+[e $U 12  ]
+[e :U 9 ]
+[e ++ _k -> 1 `i ]
+[e :U 12 ]
+[e $ < -> _k `ui _delay 9  ]
+[e :U 10 ]
+}
+"46
+[; ;main.c: 46:         (*(volatile __near unsigned char*)0xF83) = decimal[(cont/1000)%10];
+[e = *U -> -> 3971 `i `*VNuc -> *U + &U _decimal * -> % / _cont -> -> -> 1000 `i `l `ul -> -> -> 10 `i `l `ul `ux -> -> # *U &U _decimal `ui `ux `uc ]
+"47
+[; ;main.c: 47:         (((*(volatile __near unsigned char*)0xF80)) &= ~(1<<5));
+[e =& *U -> -> 3968 `i `*VNuc -> ~ << -> 1 `i -> 5 `i `uc ]
+"48
+[; ;main.c: 48:         (((*(volatile __near unsigned char*)0xF80)) &= ~(1<<4));
+[e =& *U -> -> 3968 `i `*VNuc -> ~ << -> 1 `i -> 4 `i `uc ]
+"49
+[; ;main.c: 49:         (((*(volatile __near unsigned char*)0xF80)) |= (1<<3));
+[e =| *U -> -> 3968 `i `*VNuc -> << -> 1 `i -> 3 `i `uc ]
+"50
+[; ;main.c: 50:         for(k = 0; k < delay; k++);
+{
+[e = _k -> 0 `i ]
+[e $U 16  ]
+[e :U 13 ]
+[e ++ _k -> 1 `i ]
+[e :U 16 ]
+[e $ < -> _k `ui _delay 13  ]
+[e :U 14 ]
+}
+"52
+[; ;main.c: 52:         (*(volatile __near unsigned char*)0xF83) = decimal[(cont/10000)%10];
+[e = *U -> -> 3971 `i `*VNuc -> *U + &U _decimal * -> % / _cont -> -> -> 10000 `i `l `ul -> -> -> 10 `i `l `ul `ux -> -> # *U &U _decimal `ui `ux `uc ]
+"53
+[; ;main.c: 53:         (((*(volatile __near unsigned char*)0xF80)) &= ~(1<<5));
+[e =& *U -> -> 3968 `i `*VNuc -> ~ << -> 1 `i -> 5 `i `uc ]
+"54
+[; ;main.c: 54:         (((*(volatile __near unsigned char*)0xF80)) &= ~(1<<4));
+[e =& *U -> -> 3968 `i `*VNuc -> ~ << -> 1 `i -> 4 `i `uc ]
+"55
+[; ;main.c: 55:         (((*(volatile __near unsigned char*)0xF80)) &= ~(1<<3));
+[e =& *U -> -> 3968 `i `*VNuc -> ~ << -> 1 `i -> 3 `i `uc ]
+"56
+[; ;main.c: 56:         for(k = 0; k < delay; k++);
+{
+[e = _k -> 0 `i ]
+[e $U 20  ]
+[e :U 17 ]
+[e ++ _k -> 1 `i ]
+[e :U 20 ]
+[e $ < -> _k `ui _delay 17  ]
+[e :U 18 ]
+}
+"58
+[; ;main.c: 58:     }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 100 `i 2  ]
+[e :U 3 ]
+}
+"59
+[; ;main.c: 59: }
+[e :UE 1 ]
+}
+"61
+[; ;main.c: 61:  void ledinit(){
+[v _ledinit `(v ~T0 @X0 1 ef ]
+{
+[e :U _ledinit ]
+[f ]
+"62
+[; ;main.c: 62:     (((*(volatile __near unsigned char*)0xFF1)) &= ~(1<<7));
+[e =& *U -> -> 4081 `i `*VNuc -> ~ << -> 1 `i -> 7 `i `uc ]
+"63
+[; ;main.c: 63:     (*(volatile __near unsigned char*)0xFC1) = 0x0E;
+[e = *U -> -> 4033 `i `*VNuc -> -> 14 `i `uc ]
+"64
+[; ;main.c: 64:     (*(volatile __near unsigned char*)0xF92) = 0x00;
+[e = *U -> -> 3986 `i `*VNuc -> -> 0 `i `uc ]
+"65
+[; ;main.c: 65:     (*(volatile __near unsigned char*)0xF95) = 0x00;
+[e = *U -> -> 3989 `i `*VNuc -> -> 0 `i `uc ]
+"66
+[; ;main.c: 66:     (*(volatile __near unsigned char*)0xF83) = 0x00;
+[e = *U -> -> 3971 `i `*VNuc -> -> 0 `i `uc ]
+"68
+[; ;main.c: 68:     (*(volatile __near unsigned char*)0xF93) = 0x00;
+[e = *U -> -> 3987 `i `*VNuc -> -> 0 `i `uc ]
+"70
+[; ;main.c: 70:     (((*(volatile __near unsigned char*)0xF81)) &= ~(1<<0));
+[e =& *U -> -> 3969 `i `*VNuc -> ~ << -> 1 `i -> 0 `i `uc ]
+"71
+[; ;main.c: 71:     (((*(volatile __near unsigned char*)0xF81)) &= ~(1<<1));
+[e =& *U -> -> 3969 `i `*VNuc -> ~ << -> 1 `i -> 1 `i `uc ]
+"72
+[; ;main.c: 72:     (((*(volatile __near unsigned char*)0xF81)) &= ~(1<<2));
+[e =& *U -> -> 3969 `i `*VNuc -> ~ << -> 1 `i -> 2 `i `uc ]
+"73
+[; ;main.c: 73:     (((*(volatile __near unsigned char*)0xF81)) &= ~(1<<3));
+[e =& *U -> -> 3969 `i `*VNuc -> ~ << -> 1 `i -> 3 `i `uc ]
+"74
+[; ;main.c: 74:     (((*(volatile __near unsigned char*)0xF81)) &= ~(1<<4));
+[e =& *U -> -> 3969 `i `*VNuc -> ~ << -> 1 `i -> 4 `i `uc ]
+"75
+[; ;main.c: 75:     (((*(volatile __near unsigned char*)0xF81)) &= ~(1<<5));
+[e =& *U -> -> 3969 `i `*VNuc -> ~ << -> 1 `i -> 5 `i `uc ]
+"76
+[; ;main.c: 76:     (((*(volatile __near unsigned char*)0xF81)) &= ~(1<<6));
+[e =& *U -> -> 3969 `i `*VNuc -> ~ << -> 1 `i -> 6 `i `uc ]
+"77
+[; ;main.c: 77:     (((*(volatile __near unsigned char*)0xF81)) &= ~(1<<7));
+[e =& *U -> -> 3969 `i `*VNuc -> ~ << -> 1 `i -> 7 `i `uc ]
+"79
+[; ;main.c: 79:  }
+[e :UE 21 ]
+}
+"81
+[; ;main.c: 81:  void msgDisplay(int op){
+[v _msgDisplay `(v ~T0 @X0 1 ef1`i ]
+{
+[e :U _msgDisplay ]
+[v _op `i ~T0 @X0 1 r1 ]
+[f ]
+"82
+[; ;main.c: 82:     (*(volatile __near unsigned char*)0xF84) = 0;
+[e = *U -> -> 3972 `i `*VNuc -> -> 0 `i `uc ]
+"83
+[; ;main.c: 83:     unsigned char i;
+[v _i `uc ~T0 @X0 1 a ]
+"84
+[; ;main.c: 84:     lcd_cmd(0x01);
+[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
+"85
+[; ;main.c: 85:     lcd_cmd(0x80);
+[e ( _lcd_cmd (1 -> -> 128 `i `uc ]
+"86
+[; ;main.c: 86:     if(op == 1){
+[e $ ! == _op -> 1 `i 23  ]
+{
+"87
+[; ;main.c: 87:         lcd_str("    JULIETA");
+[e ( _lcd_str (1 :s 1C ]
+"88
+[; ;main.c: 88:     }else{
+}
+[e $U 24  ]
+[e :U 23 ]
+{
+"89
+[; ;main.c: 89:         lcd_str("     MOZART");
+[e ( _lcd_str (1 :s 2C ]
+"90
+[; ;main.c: 90:     }
+}
+[e :U 24 ]
+"91
+[; ;main.c: 91:     atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"92
+[; ;main.c: 92:     lcd_cmd(0xD0);
+[e ( _lcd_cmd (1 -> -> 208 `i `uc ]
+"93
+[; ;main.c: 93:     lcd_str("----------------");
+[e ( _lcd_str (1 :s 3C ]
+"96
+[; ;main.c: 96:     for (i = 0; i < 4; i++) {
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 4 `i 25  ]
+[e $U 26  ]
+[e :U 25 ]
+{
+"97
+[; ;main.c: 97:         atraso_ms(atrasoMed);
+[e ( _atraso_ms (1 -> _atrasoMed `i ]
+"98
+[; ;main.c: 98:         lcd_cmd(0x18);
+[e ( _lcd_cmd (1 -> -> 24 `i `uc ]
+"99
+[; ;main.c: 99:     }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 4 `i 25  ]
+[e :U 26 ]
+}
+"101
+[; ;main.c: 101:     for (i = 0; i < 4; i++) {
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 4 `i 28  ]
+[e $U 29  ]
+[e :U 28 ]
+{
+"102
+[; ;main.c: 102:         atraso_ms(atrasoMed);
+[e ( _atraso_ms (1 -> _atrasoMed `i ]
+"103
+[; ;main.c: 103:         lcd_cmd(0x1C);
+[e ( _lcd_cmd (1 -> -> 28 `i `uc ]
+"104
+[; ;main.c: 104:     }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 4 `i 28  ]
+[e :U 29 ]
+}
+"106
+[; ;main.c: 106:     for (i = 0; i < 4; i++) {
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 4 `i 31  ]
+[e $U 32  ]
+[e :U 31 ]
+{
+"107
+[; ;main.c: 107:         atraso_ms(atrasoMed);
+[e ( _atraso_ms (1 -> _atrasoMed `i ]
+"108
+[; ;main.c: 108:         lcd_cmd(0x18);
+[e ( _lcd_cmd (1 -> -> 24 `i `uc ]
+"109
+[; ;main.c: 109:     }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 4 `i 31  ]
+[e :U 32 ]
+}
+"110
+[; ;main.c: 110:     atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"111
+[; ;main.c: 111: }
+[e :UE 22 ]
+}
+"114
+[; ;main.c: 114:  void buzzer(int op){
+[v _buzzer `(v ~T0 @X0 1 ef1`i ]
+{
+[e :U _buzzer ]
+[v _op `i ~T0 @X0 1 r1 ]
+[f ]
+"115
+[; ;main.c: 115:     lcd_cmd(0x01);
+[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
+"116
+[; ;main.c: 116:     lcd_cmd(0x90);
+[e ( _lcd_cmd (1 -> -> 144 `i `uc ]
+"117
+[; ;main.c: 117:     lcd_str("   BUZZER");
+[e ( _lcd_str (1 :s 4C ]
+"119
+[; ;main.c: 119:     atraso_ms(1000);
+[e ( _atraso_ms (1 -> 1000 `i ]
+"120
+[; ;main.c: 120:     lcd_cmd(0x01);
+[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
+"121
+[; ;main.c: 121:     lcd_cmd(0xC0);
+[e ( _lcd_cmd (1 -> -> 192 `i `uc ]
+"122
+[; ;main.c: 122:     lcd_str("TOCANDO: ");
+[e ( _lcd_str (1 :s 5C ]
+"123
+[; ;main.c: 123:     lcd_cmd(0x90);
+[e ( _lcd_cmd (1 -> -> 144 `i `uc ]
+"124
+[; ;main.c: 124:     if(op == 1){
+[e $ ! == _op -> 1 `i 35  ]
+{
+"125
+[; ;main.c: 125:         lcd_str("  JULIETA");
+[e ( _lcd_str (1 :s 6C ]
+"127
+[; ;main.c: 127:     }else{
+}
+[e $U 36  ]
+[e :U 35 ]
+{
+"128
+[; ;main.c: 128:         lcd_str("  MOZART");
+[e ( _lcd_str (1 :s 7C ]
+"129
+[; ;main.c: 129:     }
+}
+[e :U 36 ]
+"130
+[; ;main.c: 130:  }
+[e :UE 34 ]
+}
+"133
+[; ;main.c: 133:  void msgInicio(){
+[v _msgInicio `(v ~T0 @X0 1 ef ]
+{
+[e :U _msgInicio ]
+[f ]
+"134
+[; ;main.c: 134:     lcd_cmd(0x01);
+[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
+"135
+[; ;main.c: 135:     lcd_cmd(0x90);
+[e ( _lcd_cmd (1 -> -> 144 `i `uc ]
+"136
+[; ;main.c: 136:     lcd_str("  PRONTO");
+[e ( _lcd_str (1 :s 8C ]
+"137
+[; ;main.c: 137:     lcd_cmd(0xD0);
+[e ( _lcd_cmd (1 -> -> 208 `i `uc ]
+"138
+[; ;main.c: 138:     atraso_ms(500);
+[e ( _atraso_ms (1 -> 500 `i ]
+"139
+[; ;main.c: 139:     lcd_cmd(0x01);
+[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
+"140
+[; ;main.c: 140:     lcd_str("   VAlENDO!!!");
+[e ( _lcd_str (1 :s 9C ]
+"141
+[; ;main.c: 141:     atraso_ms(750);
+[e ( _atraso_ms (1 -> 750 `i ]
+"142
+[; ;main.c: 142:     lcd_cmd(0x01);
+[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
+"144
+[; ;main.c: 144: }
+[e :UE 37 ]
+}
+"147
+[; ;main.c: 147:  void pontFinal(){
+[v _pontFinal `(v ~T0 @X0 1 ef ]
+{
+[e :U _pontFinal ]
+[f ]
+"148
+[; ;main.c: 148:     cont /= 10;
+[e =/ _cont -> -> -> 10 `i `l `ul ]
+"149
+[; ;main.c: 149:     char valor[6];
+[v _valor `uc ~T0 @X0 -> 6 `i a ]
+"150
+[; ;main.c: 150:     itoa(cont, &valor);
+[e ( _itoa (2 , -> _cont `ui -> &U _valor `*uc ]
+"151
+[; ;main.c: 151:     lcd_cmd(0x01);
+[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
+"152
+[; ;main.c: 152:     if(cont == 500){
+[e $ ! == _cont -> -> -> 500 `i `l `ul 39  ]
+{
+"153
+[; ;main.c: 153:         lcd_cmd(0x90);
+[e ( _lcd_cmd (1 -> -> 144 `i `uc ]
+"154
+[; ;main.c: 154:         lcd_str("-  PERFECT  -");
+[e ( _lcd_str (1 :s 10C ]
+"155
+[; ;main.c: 155:     }else{
+}
+[e $U 40  ]
+[e :U 39 ]
+{
+"157
+[; ;main.c: 157:         lcd_cmd(0x80);
+[e ( _lcd_cmd (1 -> -> 128 `i `uc ]
+"158
+[; ;main.c: 158:         lcd_str("VOCE FEZ:");
+[e ( _lcd_str (1 :s 11C ]
+"159
+[; ;main.c: 159:         lcd_cmd(0xC0);
+[e ( _lcd_cmd (1 -> -> 192 `i `uc ]
+"160
+[; ;main.c: 160:         lcd_str(valor);
+[e ( _lcd_str (1 -> &U _valor `*Cuc ]
+"161
+[; ;main.c: 161:         lcd_cmd(0x90);
+[e ( _lcd_cmd (1 -> -> 144 `i `uc ]
+"162
+[; ;main.c: 162:         lcd_str("PONT MAX:");
+[e ( _lcd_str (1 :s 12C ]
+"163
+[; ;main.c: 163:         lcd_cmd(0xD0);
+[e ( _lcd_cmd (1 -> -> 208 `i `uc ]
+"164
+[; ;main.c: 164:         lcd_str("500");
+[e ( _lcd_str (1 :s 13C ]
+"165
+[; ;main.c: 165:     }
+}
+[e :U 40 ]
+"166
+[; ;main.c: 166:     atraso_ms(3000);
+[e ( _atraso_ms (1 -> 3000 `i ]
+"167
+[; ;main.c: 167: }
+[e :UE 38 ]
+}
+"170
+[; ;main.c: 170: void musica(unsigned char msc[20], unsigned char mscC[20], int op){
+[v _musica `(v ~T0 @X0 1 ef3`*uc`*uc`i ]
+{
+[e :U _musica ]
+[v _msc `*uc ~T0 @X0 1 r1 ]
+[v _mscC `*uc ~T0 @X0 1 r2 ]
+[v _op `i ~T0 @X0 1 r3 ]
+[f ]
+"171
+[; ;main.c: 171:     unsigned char i;
+[v _i `uc ~T0 @X0 1 a ]
+"172
+[; ;main.c: 172:     unsigned char tmp;
+[v _tmp `uc ~T0 @X0 1 a ]
+"174
+[; ;main.c: 174:     (*(volatile __near unsigned char*)0xF81) = 0x00;
+[e = *U -> -> 3969 `i `*VNuc -> -> 0 `i `uc ]
+"175
+[; ;main.c: 175:     (*(volatile __near unsigned char*)0xF83) = 0x00;
+[e = *U -> -> 3971 `i `*VNuc -> -> 0 `i `uc ]
+"177
+[; ;main.c: 177:     cont = 0;
+[e = _cont -> -> -> 0 `i `l `ul ]
+"179
+[; ;main.c: 179:     msgDisplay(op);
+[e ( _msgDisplay (1 _op ]
+"181
+[; ;main.c: 181:     msgInicio();
+[e ( _msgInicio ..  ]
+"183
+[; ;main.c: 183:     lcd_cmd(0x01);
+[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
+"184
+[; ;main.c: 184:     lcd_cmd(0xC0);
+[e ( _lcd_cmd (1 -> -> 192 `i `uc ]
+"185
+[; ;main.c: 185:     lcd_str("TOCANDO: ");
+[e ( _lcd_str (1 :s 14C ]
+"186
+[; ;main.c: 186:     lcd_cmd(0x90);
+[e ( _lcd_cmd (1 -> -> 144 `i `uc ]
+"187
+[; ;main.c: 187:     if(op == 1){
+[e $ ! == _op -> 1 `i 42  ]
+{
+"188
+[; ;main.c: 188:         lcd_str("  JULIETA");
+[e ( _lcd_str (1 :s 15C ]
+"190
+[; ;main.c: 190:     }else{
+}
+[e $U 43  ]
+[e :U 42 ]
+{
+"191
+[; ;main.c: 191:         lcd_str("  MOZART");
+[e ( _lcd_str (1 :s 16C ]
+"192
+[; ;main.c: 192:     }
+}
+[e :U 43 ]
+"194
+[; ;main.c: 194:     (*(volatile __near unsigned char*)0xF81) = 0x00;
+[e = *U -> -> 3969 `i `*VNuc -> -> 0 `i `uc ]
+"195
+[; ;main.c: 195:     for(i = 0; i < 20; i++){
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 44  ]
+[e $U 45  ]
+[e :U 44 ]
+{
+"196
+[; ;main.c: 196:         (*(volatile __near unsigned char*)0xF81) = 0x00;
+[e = *U -> -> 3969 `i `*VNuc -> -> 0 `i `uc ]
+"197
+[; ;main.c: 197:         (((*(volatile __near unsigned char*)0xF81)) |= (1<<msc[i]));
+[e =| *U -> -> 3969 `i `*VNuc -> << -> 1 `i -> *U + _msc * -> _i `ux -> -> # *U _msc `ui `ux `i `uc ]
+"198
+[; ;main.c: 198:         atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"199
+[; ;main.c: 199:         (((*(volatile __near unsigned char*)0xF81)) &= ~(1<<msc[i]));
+[e =& *U -> -> 3969 `i `*VNuc -> ~ << -> 1 `i -> *U + _msc * -> _i `ux -> -> # *U _msc `ui `ux `i `uc ]
+"200
+[; ;main.c: 200:         atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"201
+[; ;main.c: 201:         (*(volatile __near unsigned char*)0xF81) = 0x00;
+[e = *U -> -> 3969 `i `*VNuc -> -> 0 `i `uc ]
+"203
+[; ;main.c: 203:         (*(volatile __near unsigned char*)0xF95)=0x0F;
+[e = *U -> -> 3989 `i `*VNuc -> -> 15 `i `uc ]
+"204
+[; ;main.c: 204:         tmp=tc_tecla(1000)+0x30;
+[e = _tmp -> + -> ( _tc_tecla (1 -> -> 1000 `i `ui `i -> 48 `i `uc ]
+"205
+[; ;main.c: 205:         (*(volatile __near unsigned char*)0xF95)=0x00;
+[e = *U -> -> 3989 `i `*VNuc -> -> 0 `i `uc ]
+"207
+[; ;main.c: 207:         if(tmp == mscC[i]){
+[e $ ! == -> _tmp `i -> *U + _mscC * -> _i `ux -> -> # *U _mscC `ui `ux `i 47  ]
+{
+"209
+[; ;main.c: 209:             cont += 250;
+[e =+ _cont -> -> -> 250 `i `l `ul ]
+"210
+[; ;main.c: 210:             pontua();
+[e ( _pontua ..  ]
+"211
+[; ;main.c: 211:             buzzer(op);
+[e ( _buzzer (1 _op ]
+"212
+[; ;main.c: 212:         }
+}
+[e :U 47 ]
+"213
+[; ;main.c: 213:         (*(volatile __near unsigned char*)0xF81) = 0x3F;
+[e = *U -> -> 3969 `i `*VNuc -> -> 63 `i `uc ]
+"214
+[; ;main.c: 214:         (*(volatile __near unsigned char*)0xF83) = 0x3F;
+[e = *U -> -> 3971 `i `*VNuc -> -> 63 `i `uc ]
+"215
+[; ;main.c: 215:     }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 44  ]
+[e :U 45 ]
+}
+"218
+[; ;main.c: 218: }
+[e :UE 41 ]
+}
+"221
+[; ;main.c: 221: void menu() {
+[v _menu `(v ~T0 @X0 1 ef ]
+{
+[e :U _menu ]
+[f ]
+"223
+[; ;main.c: 223:     unsigned char i;
+[v _i `uc ~T0 @X0 1 a ]
+"224
+[; ;main.c: 224:     unsigned char tmp;
+[v _tmp `uc ~T0 @X0 1 a ]
+"225
+[; ;main.c: 225:     (*(volatile __near unsigned char*)0xFC1) = 0x06;
+[e = *U -> -> 4033 `i `*VNuc -> -> 6 `i `uc ]
+"226
+[; ;main.c: 226:     (*(volatile __near unsigned char*)0xF93) = 0x00;
+[e = *U -> -> 3987 `i `*VNuc -> -> 0 `i `uc ]
+"227
+[; ;main.c: 227:     (*(volatile __near unsigned char*)0xF95) = 0x00;
+[e = *U -> -> 3989 `i `*VNuc -> -> 0 `i `uc ]
+"228
+[; ;main.c: 228:     (*(volatile __near unsigned char*)0xF96) = 0x00;
+[e = *U -> -> 3990 `i `*VNuc -> -> 0 `i `uc ]
+[v F45 `uc ~T0 @X0 -> 20 `i s ]
+[i F45
+:U ..
+"230
+[; ;main.c: 230:     unsigned char mozart[] = {2, 4, 3, 5, 1, 2, 3, 4, 1, 1, 2, 4, 3, 1, 2, 1, 2 , 3, 2, 4 };
+-> -> 2 `i `uc
+-> -> 4 `i `uc
+-> -> 3 `i `uc
+-> -> 5 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 4 `i `uc
+-> -> 3 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 2 `i `uc
+-> -> 4 `i `uc
+..
+]
+[v _mozart `uc ~T0 @X0 -> 20 `i a ]
+[e = _mozart F45 ]
+[v F47 `uc ~T0 @X0 -> 20 `i s ]
+[i F47
+:U ..
+"231
+[; ;main.c: 231:     unsigned char mozartC[] = {'2', '4', '3', '5', '1', '2', '3', '4', '1', '1', '2', '4', '3', '1', '2', '1', '2' , '3', '2', '4'};
+-> -> 50 `ui `uc
+-> -> 52 `ui `uc
+-> -> 51 `ui `uc
+-> -> 53 `ui `uc
+-> -> 49 `ui `uc
+-> -> 50 `ui `uc
+-> -> 51 `ui `uc
+-> -> 52 `ui `uc
+-> -> 49 `ui `uc
+-> -> 49 `ui `uc
+-> -> 50 `ui `uc
+-> -> 52 `ui `uc
+-> -> 51 `ui `uc
+-> -> 49 `ui `uc
+-> -> 50 `ui `uc
+-> -> 49 `ui `uc
+-> -> 50 `ui `uc
+-> -> 51 `ui `uc
+-> -> 50 `ui `uc
+-> -> 52 `ui `uc
+..
+]
+[v _mozartC `uc ~T0 @X0 -> 20 `i a ]
+[e = _mozartC F47 ]
+[v F49 `uc ~T0 @X0 -> 20 `i s ]
+[i F49
+:U ..
+"233
+[; ;main.c: 233:     unsigned char julieta[] = {1, 1, 3, 5, 4, 2, 2, 2, 3, 4, 5, 5, 2, 1, 3, 3, 4 , 1, 1, 5};
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 3 `i `uc
+-> -> 5 `i `uc
+-> -> 4 `i `uc
+-> -> 2 `i `uc
+-> -> 2 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 5 `i `uc
+-> -> 2 `i `uc
+-> -> 1 `i `uc
+-> -> 3 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 5 `i `uc
+..
+]
+[v _julieta `uc ~T0 @X0 -> 20 `i a ]
+[e = _julieta F49 ]
+[v F51 `uc ~T0 @X0 -> 20 `i s ]
+[i F51
+:U ..
+"234
+[; ;main.c: 234:     unsigned char julietaC[] = {'1', '1', '3', '5', '4', '2', '2', '2', '3', '4', '5', '5', '2', '1', '3', '3', '4' , '1', '1', '5'};
+-> -> 49 `ui `uc
+-> -> 49 `ui `uc
+-> -> 51 `ui `uc
+-> -> 53 `ui `uc
+-> -> 52 `ui `uc
+-> -> 50 `ui `uc
+-> -> 50 `ui `uc
+-> -> 50 `ui `uc
+-> -> 51 `ui `uc
+-> -> 52 `ui `uc
+-> -> 53 `ui `uc
+-> -> 53 `ui `uc
+-> -> 50 `ui `uc
+-> -> 49 `ui `uc
+-> -> 51 `ui `uc
+-> -> 51 `ui `uc
+-> -> 52 `ui `uc
+-> -> 49 `ui `uc
+-> -> 49 `ui `uc
+-> -> 53 `ui `uc
+..
+]
+[v _julietaC `uc ~T0 @X0 -> 20 `i a ]
+[e = _julietaC F51 ]
+"236
+[; ;main.c: 236:     lcd_init();
+[e ( _lcd_init ..  ]
+"238
+[; ;main.c: 238:     lcd_cmd(0x01);
+[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
+"239
+[; ;main.c: 239:     lcd_cmd(0x80);
+[e ( _lcd_cmd (1 -> -> 128 `i `uc ]
+"240
+[; ;main.c: 240:     lcd_str("   WELCOME");
+[e ( _lcd_str (1 :s 17C ]
+"241
+[; ;main.c: 241:     lcd_cmd(0xC0);
+[e ( _lcd_cmd (1 -> -> 192 `i `uc ]
+"242
+[; ;main.c: 242:     lcd_str("----------------");
+[e ( _lcd_str (1 :s 18C ]
+"243
+[; ;main.c: 243:     lcd_cmd(0x90);
+[e ( _lcd_cmd (1 -> -> 144 `i `uc ]
+"244
+[; ;main.c: 244:     lcd_str("  PLAY GUITAR");
+[e ( _lcd_str (1 :s 19C ]
+"245
+[; ;main.c: 245:     atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"247
+[; ;main.c: 247:     while(1){
+[e :U 50 ]
+{
+"248
+[; ;main.c: 248:         lcd_cmd(0x01);
+[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
+"249
+[; ;main.c: 249:         lcd_cmd(0x80);
+[e ( _lcd_cmd (1 -> -> 128 `i `uc ]
+"250
+[; ;main.c: 250:         lcd_str("Escolha a musica");
+[e ( _lcd_str (1 :s 20C ]
+"251
+[; ;main.c: 251:         lcd_cmd(0xC0);
+[e ( _lcd_cmd (1 -> -> 192 `i `uc ]
+"252
+[; ;main.c: 252:         lcd_str("(1) - JULIETA");
+[e ( _lcd_str (1 :s 21C ]
+"253
+[; ;main.c: 253:         lcd_cmd(0x90);
+[e ( _lcd_cmd (1 -> -> 144 `i `uc ]
+"254
+[; ;main.c: 254:         lcd_str("(2) - MOZART");
+[e ( _lcd_str (1 :s 22C ]
+"255
+[; ;main.c: 255:         lcd_cmd(0xD0);
+[e ( _lcd_cmd (1 -> -> 208 `i `uc ]
+"256
+[; ;main.c: 256:         lcd_str("****************");
+[e ( _lcd_str (1 :s 23C ]
+"257
+[; ;main.c: 257:         (*(volatile __near unsigned char*)0xF95) = 0x0F;
+[e = *U -> -> 3989 `i `*VNuc -> -> 15 `i `uc ]
+"258
+[; ;main.c: 258:         tmp = tc_tecla(0) + 0x30;
+[e = _tmp -> + -> ( _tc_tecla (1 -> -> 0 `i `ui `i -> 48 `i `uc ]
+"260
+[; ;main.c: 260:         (*(volatile __near unsigned char*)0xF95) = 0x00;
+[e = *U -> -> 3989 `i `*VNuc -> -> 0 `i `uc ]
+"262
+[; ;main.c: 262:         if(tmp == '1' || tmp == '2'){
+[e $ ! || == -> _tmp `ui -> 49 `ui == -> _tmp `ui -> 50 `ui 52  ]
+{
+"263
+[; ;main.c: 263:             if(tmp == '1'){
+[e $ ! == -> _tmp `ui -> 49 `ui 53  ]
+{
+"264
+[; ;main.c: 264:                 musica(julieta, julietaC, 1);
+[e ( _musica (3 , , &U _julieta &U _julietaC -> 1 `i ]
+"265
+[; ;main.c: 265:                 pontFinal();
+[e ( _pontFinal ..  ]
+"266
+[; ;main.c: 266:             }else{
+}
+[e $U 54  ]
+[e :U 53 ]
+{
+"267
+[; ;main.c: 267:                 musica(mozart, mozartC, 2);
+[e ( _musica (3 , , &U _mozart &U _mozartC -> 2 `i ]
+"268
+[; ;main.c: 268:                 pontFinal();
+[e ( _pontFinal ..  ]
+"269
+[; ;main.c: 269:             }
+}
+[e :U 54 ]
+"270
+[; ;main.c: 270:         }else{
+}
+[e $U 55  ]
+[e :U 52 ]
+{
+"271
+[; ;main.c: 271:             lcd_cmd(0x01);
+[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
+"272
+[; ;main.c: 272:             lcd_cmd(0xD0);
+[e ( _lcd_cmd (1 -> -> 208 `i `uc ]
+"273
+[; ;main.c: 273:             lcd_dat(tmp);
+[e ( _lcd_dat (1 _tmp ]
+"274
+[; ;main.c: 274:             lcd_cmd(0x90);
+[e ( _lcd_cmd (1 -> -> 144 `i `uc ]
+"275
+[; ;main.c: 275:             lcd_str("Op <1> ou <2> ");
+[e ( _lcd_str (1 :s 24C ]
+"276
+[; ;main.c: 276:         }
+}
+[e :U 55 ]
+"277
+[; ;main.c: 277:         atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"278
+[; ;main.c: 278:     }
+}
+[e :U 49 ]
+[e $U 50  ]
+[e :U 51 ]
+"280
+[; ;main.c: 280: }
+[e :UE 48 ]
+}
+[v $root$_main `(v ~T0 @X0 0 e ]
+"282
+[; ;main.c: 282: int main(){
+[v _main `(i ~T0 @X0 1 ef ]
+{
+[e :U _main ]
+[f ]
+"283
+[; ;main.c: 283:     menu();
+[e ( _menu ..  ]
+"284
+[; ;main.c: 284:     return 0;
+[e ) -> 0 `i ]
+[e $UE 56  ]
+"285
+[; ;main.c: 285: }
+[e :UE 56 ]
+}
+[a 20C 69 115 99 111 108 104 97 32 97 32 109 117 115 105 99 97 0 ]
+[a 22C 40 50 41 32 45 32 77 79 90 65 82 84 0 ]
+[a 2C 32 32 32 32 32 77 79 90 65 82 84 0 ]
+[a 7C 32 32 77 79 90 65 82 84 0 ]
+[a 16C 32 32 77 79 90 65 82 84 0 ]
+[a 4C 32 32 32 66 85 90 90 69 82 0 ]
+[a 19C 32 32 80 76 65 89 32 71 85 73 84 65 82 0 ]
+[a 8C 32 32 80 82 79 78 84 79 0 ]
+[a 17C 32 32 32 87 69 76 67 79 77 69 0 ]
+[a 21C 40 49 41 32 45 32 74 85 76 73 69 84 65 0 ]
+[a 1C 32 32 32 32 74 85 76 73 69 84 65 0 ]
+[a 6C 32 32 74 85 76 73 69 84 65 0 ]
+[a 15C 32 32 74 85 76 73 69 84 65 0 ]
+[a 11C 86 79 67 69 32 70 69 90 58 0 ]
+[a 12C 80 79 78 84 32 77 65 88 58 0 ]
+[a 13C 53 48 48 0 ]
+[a 3C 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 0 ]
+[a 18C 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 0 ]
+[a 10C 45 32 32 80 69 82 70 69 67 84 32 32 45 0 ]
+[a 23C 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 0 ]
+[a 9C 32 32 32 86 65 108 69 78 68 79 33 33 33 0 ]
+[a 24C 79 112 32 60 49 62 32 111 117 32 60 50 62 32 0 ]
+[a 5C 84 79 67 65 78 68 79 58 32 0 ]
+[a 14C 84 79 67 65 78 68 79 58 32 0 ]
