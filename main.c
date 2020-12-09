@@ -1,9 +1,9 @@
-/*  PROJETO PLAY GUITAR
-*   ALYSON HENRIQUE GON«ALO  2019004779
-*   NONATO DA SILVA NERI JUNIOR 2019008160
+/*  PROJETO PLAY GUITAR - Desenvolvida em conjunto das mat√©rias teorica e pr√°tica
+*   ALYSON HENRIQUE GON√áALO  2019004779
+*   NONATO DA SILVA NERI JUNIOR 2019008160 - primeira parte da disciplina em 2020.1
 */
 
-/* NA EXECU«√O DO PROJETO O CLOCK ESTAVA EM 8MHz*/
+/* NA EXECU√á√ÉO DO PROJETO O CLOCK ESTAVA EM 8MHz*/
 #include "config.h"
 #include "pic18f4520.h"
 #include "delay.h"
@@ -16,7 +16,7 @@
  unsigned int atrasoMax = 1000;
  long int unsigned cont = 0;
 
- //MOSTRA A PONTUA«√O NO DISPLAY DE 7 SEGMENTOS
+ //MOSTRA A PONTUA√á√ÉO NO DISPLAY DE 7 SEGMENTOS
  void pontua(void){ 
     BitClr(INTCON2, 7); //Liga o pull up
     ADCON1 = 0x0E; // config AD
@@ -32,27 +32,27 @@
     for(i = 0;i < 100;i++){
         
         PORTD = decimal[(cont/10)%10];
-        BitSet(PORTA, 5); //Liga o 1∫ Display
-        BitClr(PORTA, 4); //Desliga o 2∫ Display
-        BitClr(PORTA, 3); //Desliga o 3∫ Display
+        BitSet(PORTA, 5); //Liga o 1¬∫ Display
+        BitClr(PORTA, 4); //Desliga o 2¬∫ Display
+        BitClr(PORTA, 3); //Desliga o 3¬∫ Display
         for(k = 0; k < delay; k++);
         
         PORTD = decimal[(cont/100)%10];
-        BitClr(PORTA, 5); //Desliga o 1∫ Display
-        BitSet(PORTA, 4); //Liga o 2∫ Display
-        BitClr(PORTA, 3); //Desliga o 3∫ Display
+        BitClr(PORTA, 5); //Desliga o 1¬∫ Display
+        BitSet(PORTA, 4); //Liga o 2¬∫ Display
+        BitClr(PORTA, 3); //Desliga o 3¬∫ Display
         for(k = 0; k < delay; k++);
         
         PORTD = decimal[(cont/1000)%10];
-        BitClr(PORTA, 5); //desliga o 1∫ Display
-        BitClr(PORTA, 4); //Desliga o 2∫ Display
-        BitSet(PORTA, 3); //Liga o 3∫ Display
+        BitClr(PORTA, 5); //desliga o 1¬∫ Display
+        BitClr(PORTA, 4); //Desliga o 2¬∫ Display
+        BitSet(PORTA, 3); //Liga o 3¬∫ Display
         for(k = 0; k < delay; k++);
         
         PORTD = decimal[(cont/10000)%10];
-        BitClr(PORTA, 5); //desliga o 1∫ Display
-        BitClr(PORTA, 4); //Desliga o 2∫ Display
-        BitClr(PORTA, 3); //Desliga o 3∫ Display
+        BitClr(PORTA, 5); //desliga o 1¬∫ Display
+        BitClr(PORTA, 4); //Desliga o 2¬∫ Display
+        BitClr(PORTA, 3); //Desliga o 3¬∫ Display
         for(k = 0; k < delay; k++);
         
     }
@@ -129,7 +129,7 @@
     } 
  }
  
- //MENSAGEM DE ATEN«√O PARA O JOGADOR
+ //MENSAGEM DE ATEN√á√ÉO PARA O JOGADOR
  void msgInicio(){
     lcd_cmd(L_CLR);
     lcd_cmd(L_L3);
@@ -143,7 +143,7 @@
     
 }
  
- //EXIBE A PONTUA«√O FINAL DO JOGADOR NO LCD AP”S A M⁄SICA ACABAR
+ //EXIBE A PONTUA√á√ÉO FINAL DO JOGADOR NO LCD AP√ìS A M√öSICA ACABAR
  void pontFinal(){
     cont /= 10;
     char valor[6];
@@ -166,7 +166,7 @@
     atraso_ms(3000);
 }
  
-//FUN«√O QUE EXECUTA A M⁄SICA ESCOLHIDA
+//FUN√á√ÉO QUE EXECUTA A M√öSICA ESCOLHIDA
 void musica(unsigned char msc[20], unsigned char mscC[20], int op){
     unsigned char i;
     unsigned char tmp;
@@ -217,7 +217,7 @@ void musica(unsigned char msc[20], unsigned char mscC[20], int op){
     
 }
 
-//UM MENU COM AS M⁄SICAS DEFINIDAS, A PARTE INICIAL DO JOGO
+//UM MENU COM AS M√öSICAS DEFINIDAS, A PARTE INICIAL DO JOGO
 void menu() {
 
     unsigned char i;
@@ -255,7 +255,7 @@ void menu() {
         lcd_cmd(L_L4);
         lcd_str("****************");
         TRISD = 0x0F;
-        tmp = tc_tecla(0) + 0x30; // 0x30 È pra ajustar para inteiros
+        tmp = tc_tecla(0) + 0x30; // 0x30 √© pra ajustar para inteiros
         //leitura da tecla
         TRISD = 0x00;
 
